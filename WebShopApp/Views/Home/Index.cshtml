@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@model WebShopApp.ViewModels.ProductsViewModel
+
+@{
+    ViewBag.Title = "Каталог игроков";
+}
+
+<h2>Каталог товаров</h2>
+
+<table align="left">
+    <tr>
+        <th>Категория</th>
+    </tr>
+
+    @foreach (var item in Model.Categories)
+    {
+        <tr>
+            <td> @Html.ActionLink(item.Name, "Show", new { parameterName = item.Name }) </td>
+        </tr>
+    }
+</table>
+
+@if (Model.Products != null)
+{
+<table align="left">
+    <tr>
+        <th>Название товара</th>
+    </tr>
+
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
+    }
+</table>
+}
